@@ -138,7 +138,7 @@ def Registration():
             print('Error occurred.')
 
 
-Registration()
+# Registration()
 
 
 

@@ -13,3 +13,4 @@ English={'Igbo': 'bia'}
 English={'Igbo': 'bia'}
 English={'Hausa': 'zo', 'Igbo': 'bia'}
 English={'Hausa': 'ina son ku', 'French': "je t'aime", 'Dutch': 'ik houd van je'}
+English={'French': 'viens'}
