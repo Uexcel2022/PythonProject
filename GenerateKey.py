@@ -19,7 +19,7 @@ def generateKey():
                 time.sleep(1)
                 break
             time.sleep(1)
-            conn = sqlite3.connect('USERS BIODATA.db')
+            conn = sqlite3.connect('USER DETAILS.db')
             cur = conn.cursor()
             cur.execute(f"SELECT * FROM UserInfoTable WHERE Phone = '{phone}'")
             records = cur.fetchall()
@@ -40,7 +40,7 @@ def generateKey():
             if Quit == 'E' or len(Phone) == 0:
                 print('Process cancelled.')
             else:
-                conn2 = sqlite3.connect('USERS BIODATA.db')
+                conn2 = sqlite3.connect('USER DETAILS.db')
                 cur2 = conn2.cursor()
                 cur2.execute('INSERT INTO UserLogTable VALUES (?, ?,? ,?)', (Phone, Pin, PrivateKey, PublicKey))
                 conn2.commit()
@@ -53,8 +53,8 @@ def generateKey():
         except KeyboardInterrupt:
             print("Program terminated")
             break
-        except sqlite3.OperationalError as err:
-            print('OperationalError: ', err)
+        except sqlite3.OperationalError:
+            print('Error occurred')
             break
 
 

@@ -21,7 +21,7 @@ def LogIN():
                 continue
 
             elif options == 'R':
-                from ProjectREGUsingRegex import Registration
+                from Registration import Registration
                 Registration()
                 time.sleep(0.5)
                 continue

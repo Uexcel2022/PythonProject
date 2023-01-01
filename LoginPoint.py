@@ -22,7 +22,7 @@ def Login():
                 name = ''
                 phone = ''
                 count = 1
-                conn = sqlite3.connect('USERS BIODATA.db')
+                conn = sqlite3.connect('USER DETAILS.db')
                 cur = conn.cursor()
                 cur.execute(f"SELECT * FROM UserLogTable WHERE PublicKey = '{PubKy}'")
                 records = cur.fetchall()
@@ -32,7 +32,7 @@ def Login():
                         if PinPrKy == x or pin == x:
                             validKeys.append(x)
                         time.sleep(0.5)
-                conn = sqlite3.connect('USERS BIODATA.db')
+                conn = sqlite3.connect('USER DETAILS.db')
                 cur = conn.cursor()
                 cur.execute(f"SELECT * FROM UserInfoTable WHERE Phone == '{phone}'")
                 records1 = cur.fetchall()
@@ -40,7 +40,7 @@ def Login():
                     name += (items[0])
                     count += int((items[5]))
                 if len(validKeys) > 1:
-                    conn = sqlite3.connect('USERS BIODATA.db')
+                    conn = sqlite3.connect('USER DETAILS.db')
                     cur = conn.cursor()
                     cur.execute(f"Update UserInfoTable SET LoginCount == '{count}' WHERE Phone == '{phone}'")
                     conn.commit()
