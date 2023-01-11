@@ -4,14 +4,8 @@ def EmailRegex(Email):
     import time
     import re
     time.sleep(0.2)
-    validEmail = ''
-    accept = "[a-z0-9]*[._]?[a-z0-9]+[_.]?[a-z0-9]+[@][a-z]+[.]?[a-z]*[.][a-z]+"
-    check = re.fullmatch(accept, email)
-    if check:
-        validEmail += email
-    if len(validEmail) > 0:
-
-        return validEmail
+    if check := re.fullmatch("[a-z0-9]*[._]?[a-z0-9]+[_.]?[a-z0-9]+[@][a-z]+[.]?[a-z]*[.][a-z]+", email):
+        return check.group()
 
 
-# EmailRegex("yt@gmail.com")
+#EmailRegex("k.ez_902@gmail.com")
