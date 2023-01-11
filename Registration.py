@@ -52,17 +52,18 @@ def Registration():
             if Age.isdigit() and Age == '0':
                 print('Process cancelled')
                 break
-            if not Age.isdigit():
-                print("Invalid age Format")
-                Age = input("Re-enter Age : ").strip()
-            if not Age.isdigit():
-                print("Invalid Age format.")
-                Age = input("Ee-enter Age: ").strip()
-            if not Age.isdigit():
-                print("Invalid age format.")
-                Age = input("Re-enter age: ").strip()
-            if not Age.isdigit():
-                print("Invalid age format.")
+            from AgeRegex import AgeRegex
+            if AgeRegex(Age) is None:
+                print("Unexpected age value. It seems you're blow 18 years old or off expected age limit of 159 years.")
+                Age = input("Re-enter Age [18 - 159]: ").strip()
+            if AgeRegex(Age) is None:
+                print("Unexpected age value .")
+                Age = input("Re-enter Age [18 - 159]: ").strip()
+            if AgeRegex(Age) is None:
+                print("Unexpected age value.")
+                Age = input("Re-enter age [18 - 159]: ").strip()
+            if AgeRegex(Age) is None:
+                print("We sorry it appears you are not old enough..")
                 continue
             age += Age
 
