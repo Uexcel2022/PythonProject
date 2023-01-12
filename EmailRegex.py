@@ -7,4 +7,4 @@ def EmailRegex(Email):
     if check := re.fullmatch(r"^[a-z0-9]+.?[a-z0-9]*.?[a-z0-9]*@[a-z0-9.]+[a-z]+(\.[a-z]+)$", email):
         return check.group()
 
-print(EmailRegex("ma.la@cs50.harvard.com"))
+#print(EmailRegex("ma.la@cs50.harvard.com"))
