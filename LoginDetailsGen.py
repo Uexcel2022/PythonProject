@@ -16,3 +16,4 @@ def GenerateCode():
 
     return pin, userPrbKey, userPubKey
 
+
