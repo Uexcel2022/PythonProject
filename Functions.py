@@ -490,24 +490,29 @@ def generateKey():
 
 def Login():
     import sqlite3
+    import time
     brQ = ''
     while True:
+        if brQ == 'Q':
+            break
         try:
-            import time
-            if brQ == 'Q':
-                break
-            PubKy = input("""Enter your Public key to Login or "Q" to Quit: """).strip()
-            if PubKy.upper() == 'Q':
+            PubKy = input("""Enter your Public key to Login, N for new login details, or "Q" to Quit: """).strip()
+            if PubKy.upper() == 'N':
+                generateKey()
+                continue
+
+            elif PubKy.upper() == 'Q':
                 brQ += 'Q'
                 print('Quiting...')
                 time.sleep(0.5)
                 break
             else:
-                PinPrKy = input("Enter private key: ").strip()
-                pin = input("Enter your pin: ").strip()
+                PrKy = input("Enter private key: ").strip()
+                # pin = input("Enter your pin: ").strip()
                 print("Working on it...")
                 time.sleep(0.5)
-                validKeys = []
+                validPin = ''
+                validPrKey = []
                 name = ''
                 phone = ''
                 count = 1
@@ -516,31 +521,49 @@ def Login():
                 cur.execute(f"SELECT * FROM UserLogTable WHERE PublicKey = '{PubKy}'")
                 records = cur.fetchall()
                 for items in records:
+                    validPin += items[1]
                     phone += items[0]
-                    for x in items:
-                        if PinPrKy == x or pin == x:
-                            validKeys.append(x)
-                        time.sleep(0.5)
-                conn = sqlite3.connect('USER DETAILS.db')
-                cur = conn.cursor()
-                cur.execute(f"SELECT * FROM UserInfoTable WHERE Phone == '{phone}'")
-                records1 = cur.fetchall()
-                for items in records1:
-                    name += (items[0])
-                    count += int((items[5]))
-                if len(validKeys) > 1:
+                    # for x in items:
+                    if items[2] == PrKy:
+                        validPrKey.append(items[2])
+                    else:
+                        print("Invalid login details.")
+                if len(validPrKey) > 0:
+                    time.sleep(0.5)
                     conn = sqlite3.connect('USER DETAILS.db')
                     cur = conn.cursor()
-                    cur.execute(f"Update UserInfoTable SET LoginCount == '{count}' WHERE Phone == '{phone}'")
-                    conn.commit()
-                    conn.close()
+                    cur.execute(f"SELECT * FROM UserInfoTable WHERE Phone == '{phone}'")
+                    records1 = cur.fetchall()
+                    for items in records1:
+                        name += (items[0])
+                        count += int((items[5]))
                     print(f"Welcome {name},")
-                    time.sleep(1)
-                    Translator()
-                    break
-                else:
-                    print("Invalid authentication details.")
-                    continue
+                    while True:
+                        pin = input("Enter your pin to begin translation, N for new pin or O to quit: ").strip()
+                        if pin == validPin:
+                            conn = sqlite3.connect('USER DETAILS.db')
+                            cur = conn.cursor()
+                            cur.execute(f"Update UserInfoTable SET LoginCount == '{count}' WHERE Phone == '{phone}'")
+                            conn.commit()
+                            conn.close()
+                            time.sleep(1)
+                            Translator()
+                            brQ += 'Q'
+                            break
+
+                        elif pin.upper() == 'N':
+                            generateKey()
+                            break
+
+                        elif pin == '0':
+                            brQ += 'Q'
+                            print('Quiting...')
+                            time.sleep(0.5)
+                            break
+                        else:
+                            print("Invalid pin.")
+                            continue
+
         except KeyboardInterrupt:
             print('Program terminated.')
             break

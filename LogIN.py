@@ -28,6 +28,7 @@ def LogIN():
                 Functions.generateKey()
                 time.sleep(0.5)
                 continue
+
             else:
                 print('No valid option selected')
         except KeyboardInterrupt:
