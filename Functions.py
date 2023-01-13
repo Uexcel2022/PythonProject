@@ -461,7 +461,6 @@ def generateKey():
                     if phone == items[2]:
                         Phone += phone
                         name += items[0]
-                        from LoginDetailsGen import GenerateCode
                         keys = GenerateCode()
                         Pin += keys[0]
                         PrivateKey += keys[1]
@@ -536,6 +535,7 @@ def Login():
                     print(f"Welcome {name},")
                     time.sleep(1)
                     Translator()
+                    break
                 else:
                     print("Invalid authentication details.")
                     continue
