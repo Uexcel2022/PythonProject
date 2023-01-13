@@ -21,7 +21,7 @@ def PhoneNumber(item):
     if match := re.fullmatch("\+234[7-9][0-1][0-9]{8}|0[7-9][0-1][0-9]{8}", item):
         return match.group()
 
-def insert(FirstName, SurName, Phone, Age,  EmailAddress, Pin, PrivateKey, PublicKey):
+def Insert(FirstName, SurName, Phone, Age, EmailAddress, Pin, PrivateKey, PublicKey):
     import sqlite3
     import time
     try:
@@ -203,7 +203,7 @@ def Registration():
         PrivateKey = keys[1]
         PublicKey = keys[2]
 
-        Error = insert(FirstName, surname, phone, age, email, Pin, PrivateKey, PublicKey)
+        Error = Insert(FirstName, surname, phone, age, email, Pin, PrivateKey, PublicKey)
         if Error is None:
             print('print registration completed')
             print(f"Dear {FirstName}, \nyour longin details are:")
