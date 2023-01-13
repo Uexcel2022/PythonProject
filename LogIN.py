@@ -1,8 +1,8 @@
 
 print('Welcome to One-World Translation....')
 
-
 def LogIN():
+    import Functions
     import time
     while True:
         try:
@@ -15,20 +15,17 @@ def LogIN():
                 time.sleep(2)
                 break
             if options == 'L':
-                from LoginPoint import Login
-                Login()
+                Functions.Login()
                 time.sleep(0.5)
                 continue
 
             elif options == 'R':
-                from Registration import Registration
-                Registration()
+                Functions.Registration()
                 time.sleep(0.5)
                 continue
 
             elif options == 'N':
-                from GenerateKey import generateKey
-                generateKey()
+                Functions.generateKey()
                 time.sleep(0.5)
                 continue
             else:
