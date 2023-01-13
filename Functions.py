@@ -508,7 +508,6 @@ def Login():
                 break
             else:
                 PrKy = input("Enter private key: ").strip()
-                # pin = input("Enter your pin: ").strip()
                 print("Working on it...")
                 time.sleep(0.5)
                 validPin = ''
