@@ -271,9 +271,10 @@ def Translator():
                         def trans(source, target, text):
                             translated = GoogleTranslator(source= source, target=target).translate(text)
                             lang[target.title()] = translated
-                            print(lang)
+                            return lang
 
-                        trans(source,lan, text)
+                        print(trans(source,lan, text))
+
                         try:
                             f = open('TranslationNote.txt', 'a')
                             f.write(f"\n{source.title()}={lang}")
@@ -330,14 +331,13 @@ def Translator():
                         continue
                     else:
                         lang2 = {}
-
                         def trans1(source1, target, text):
                             translated = GoogleTranslator(source=source1, target=target).translate(text)
                             lang2[target.title()] = translated
-                            print(lang2)
+                            return lang2
 
                     trans1(source1,lan1, text)
-                    trans1(source1,lan2, text)
+                    print(trans1(source1,lan2, text))
                     try:
                         f = open('TranslationNote.txt', 'a')
                         f.write(f"\n{source1.title()}={lang2}")
@@ -399,16 +399,14 @@ def Translator():
                         continue
                     else:
                         lang3 = {}
-                        
+
                         def trans3(source2, target, text):
                             translated = GoogleTranslator(source=source2, target=target).translate(text)
                             lang3[target.title()] = translated
-                            print(lang3)
-
+                            return lang3
                     trans3(source2, lan1, text)
                     trans3(source2,lan2, text)
-                    trans3(source2, lan3, text)
-
+                    print(trans3(source2, lan3, text))
                     try:
                         f = open('TranslationNote.txt', 'a')
                         f.write(f"\n{source2.title()}={lang3}")
@@ -429,7 +427,7 @@ def Translator():
                     except PermissionError:
                         print('Permission denied')
             except KeyboardInterrupt:
-                print('Error occurred. Program terminated.')
+                print('Program terminated.')
                 break
 
 def generateKey():
@@ -545,6 +543,7 @@ def Login():
                     continue
         except KeyboardInterrupt:
             print('Program terminated.')
+            break
         except sqlite3.OperationalError:
             print('Error occurred.')
             break
