@@ -26,3 +26,5 @@ English={'Yoruba': 'wá', 'Igbo': 'bia', 'Hausa': 'zo'}
 English={'Yoruba': 'wá', 'Hausa': 'zo', 'Igbo': 'bia'}
 English={'Hausa': 'zo'}
 English={'Yoruba': 'wá', 'Hausa': 'zo', 'Igbo': 'bia'}
+English={'French': 'viens'}
+English={'Yoruba': 'wá', 'Hausa': 'zo', 'Igbo': 'bia'}
