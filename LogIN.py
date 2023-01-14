@@ -9,7 +9,7 @@ def LogIN():
             time.sleep(1)
             options = input("""Enter "L" to login, "R" to register or "N" to get new log in details "Q" to Quit: """).upper()
             print('Working on it...')
-            time.sleep(2)
+            time.sleep(1)
             if options == 'Q':
                 print('Quiting...')
                 time.sleep(2)

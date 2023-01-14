@@ -248,6 +248,7 @@ def Translator():
                         time.sleep(2)
                         break
                     text = input("""ENTER THE TEXT TO BE TRANSLATED OR "Q" TO QUIT : """).lower().strip()
+                    print('Working on it...')
                     if text == 'q':
                         print("Quiting")
                         time.sleep(2)
@@ -312,6 +313,7 @@ def Translator():
                         time.sleep(2)
                         break
                     text = input("""ENTER THE TEXT TO BE TRANSLATED OR "Q" TO QUIT : """).lower().strip()
+                    print('Working on it...')
                     if text == 'q':
                         print("Quiting")
                         time.sleep(2)
@@ -380,6 +382,7 @@ def Translator():
                         time.sleep(2)
                         break
                     text = input("""ENTER THE TEXT TO BE TRANSLATED OR "Q" TO QUIT : """).lower().strip()
+                    print('Working on it...')
                     if text == 'q':
                         print("Quiting...")
                         time.sleep(2)
@@ -497,7 +500,7 @@ def Login():
             break
         try:
             PubKy = input("""Enter your Public key to Login, N for new login details, or "Q" to Quit: """).strip()
-            if PubKy.upper() == 'N':
+            if len(PubKy) == 1 and PubKy.upper()== 'N':
                 generateKey()
                 continue
 
@@ -522,7 +525,6 @@ def Login():
                 for items in records:
                     validPin += items[1]
                     phone += items[0]
-                    # for x in items:
                     if items[2] == PrKy:
                         validPrKey.append(items[2])
                     else:
@@ -539,6 +541,7 @@ def Login():
                     print(f"Welcome {name},")
                     while True:
                         pin = input("Enter your pin to begin translation, N for new pin or O to quit: ").strip()
+                        print("Working on it...")
                         if pin == validPin:
                             conn = sqlite3.connect('USER DETAILS.db')
                             cur = conn.cursor()
