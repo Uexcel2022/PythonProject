@@ -234,10 +234,12 @@ def Translator():
                     print("Quiting...")
                     time.sleep(2)
                     break
+
                 elif num > 3:
                     print("Were are sorry we can't translate more three languages at once at the moment")
                     continue
-                if num == 1:
+
+                elif num == 1:
                     source = input("""ENTER THE SOURCE LANGUAGE OR "Q" TO QUIT : """).lower().strip()
                     if source == 'q':
                         print("Quiting")
@@ -269,7 +271,6 @@ def Translator():
                         continue
                     else:
                         lang = {}
-
                         def trans(source, target, text):
                             translated = GoogleTranslator(source= source, target=target).translate(text)
                             lang[target.title()] = translated
@@ -339,27 +340,27 @@ def Translator():
                             lang2[target.title()] = translated
                             return lang2
 
-                    trans1(source1,lan1, text)
-                    print(trans1(source1,lan2, text))
-                    try:
-                        f = open('TranslationNote.txt', 'a')
-                        f.write(f"\n{source1.title()}={lang2}")
-                        f.close()
-                    except UnicodeEncodeError:
-                        print("UnicodeEncodeError occurred. ")
-                    except NameError:
-                        print("NameError occurred")
+                        trans1(source1,lan1, text)
+                        print(trans1(source1,lan2, text))
+                        try:
+                            f = open('TranslationNote.txt', 'a')
+                            f.write(f"\n{source1.title()}={lang2}")
+                            f.close()
+                        except UnicodeEncodeError:
+                            print("UnicodeEncodeError occurred. ")
+                        except NameError:
+                            print("NameError occurred")
 
-                    Source = ([source1, source1])
-                    Target = list(lang2)
-                    word = (list(lang2.values()))
-                    TranslationTable = pd.DataFrame({'Source': Source, 'Target': Target, 'Text': word})
-                    TranslationTable.index = TranslationTable.index + 1
-                    print(TranslationTable)
-                    try:
-                        TranslationTable.to_csv("TranslationTable.csv")
-                    except PermissionError:
-                        print('Permission denied')
+                        Source = ([source1, source1])
+                        Target = list(lang2)
+                        word = (list(lang2.values()))
+                        TranslationTable = pd.DataFrame({'Source': Source, 'Target': Target, 'Text': word})
+                        TranslationTable.index = TranslationTable.index + 1
+                        print(TranslationTable)
+                        try:
+                            TranslationTable.to_csv("TranslationTable.csv")
+                        except PermissionError:
+                            print('Permission denied')
 
                 elif num == 3:
                     source2 = input("""ENTER THE SOURCE LANGUAGE OR "Q" TO QUIT : """).lower().strip()
@@ -408,28 +409,28 @@ def Translator():
                             translated = GoogleTranslator(source=source2, target=target).translate(text)
                             lang3[target.title()] = translated
                             return lang3
-                    trans3(source2, lan1, text)
-                    trans3(source2,lan2, text)
-                    print(trans3(source2, lan3, text))
-                    try:
-                        f = open('TranslationNote.txt', 'a')
-                        f.write(f"\n{source2.title()}={lang3}")
-                        f.close()
-                    except UnicodeEncodeError:
-                        print("UnicodeEncodeError occurred. ")
-                    except NameError:
-                        print("NameError occurred")
+                        trans3(source2, lan1, text)
+                        trans3(source2,lan2, text)
+                        print(trans3(source2, lan3, text))
+                        try:
+                            f = open('TranslationNote.txt', 'a')
+                            f.write(f"\n{source2.title()}={lang3}")
+                            f.close()
+                        except UnicodeEncodeError:
+                            print("UnicodeEncodeError occurred. ")
+                        except NameError:
+                            print("NameError occurred")
 
-                    Source = ([source2, source2, source2])
-                    Target = list(lang3)
-                    word = (list(lang3.values()))
-                    TranslationTable = pd.DataFrame({'Source': Source, 'Target': Target, 'Text': word})
-                    TranslationTable.index = TranslationTable.index + 1
-                    print(TranslationTable)
-                    try:
-                        TranslationTable.to_csv("TranslationTable.csv")
-                    except PermissionError:
-                        print('Permission denied')
+                        Source = ([source2, source2, source2])
+                        Target = list(lang3)
+                        word = (list(lang3.values()))
+                        TranslationTable = pd.DataFrame({'Source': Source, 'Target': Target, 'Text': word})
+                        TranslationTable.index = TranslationTable.index + 1
+                        print(TranslationTable)
+                        try:
+                            TranslationTable.to_csv("TranslationTable.csv")
+                        except PermissionError:
+                            print('Permission denied')
             except KeyboardInterrupt:
                 print('Program terminated.')
                 break

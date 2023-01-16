@@ -32,3 +32,5 @@ English={'French': "je t'aime"}
 English={'Dutch': 'vriend'}
 English={'Igbo': 'enyi', 'Hausa': 'aboki'}
 English={'French': 'viens', 'Dutch': 'komen', 'Hausa': 'zo'}
+English={'Hausa': 'zo'}
+English={'Igbo': 'bia', 'Hausa': 'zo'}
