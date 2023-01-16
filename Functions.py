@@ -72,7 +72,7 @@ def GenerateCode():
     from string import printable
     from random import randint
     pin = str(randint(1000, 9999))
-    
+
     userPrKey = ''
     for i in range(7):
         rand = randint(10, 61)
