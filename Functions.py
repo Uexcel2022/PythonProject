@@ -4,7 +4,7 @@ def EmailRegex(Email):
     import time
     import re
     time.sleep(0.2)
-    if check := re.fullmatch(r"^[a-z0-9]+[_.]?[a-z0-9]+[_.]?[a-z0-9]+@[a-z0-9]+\.?[a-z]*\.([a-z]{3}|[a-z]{2})", email):
+    if check := re.fullmatch(r"^[a-z0-9]+[_.]?[a-z0-9]+[_.]?[a-z0-9]+@[a-z0-9]+\.?[a-z]*\.([a-z]{2,3})", email):
         return check.group()
 
 def AgeRegex(Age):
